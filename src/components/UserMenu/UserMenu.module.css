@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    align-items: center;
+  }
+  /* avatar: {
+    marginRight: 4,
+  }, */
+  .post {
+    font-weight: 700;
+    margin-right: 12px;
+    color: rgba(11, 144, 108);
+  }
+
+  button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  color: rgba(11, 144, 108);
+  border-radius: 10px;
+  background-color: rgba(11, 144, 109, 0.143);
+  border: solid 2px rgb(11, 144, 108);
+  outline: rgb(11, 144, 108);
+}
+
+button:focus,
+button:hover {
+  box-shadow: 3px 3px 14px 12px rgb(11, 144, 108, 0.5);
+  color: beige;
+}

@@ -1,0 +1,16 @@
+ .form {
+    width: 320px;
+    }
+
+.label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    color: rgba(11, 144, 108);
+}
+
+.title{
+  margin: 10px 0;
+  color: rgba(11, 144, 108);
+  font-size: 24px;
+}
