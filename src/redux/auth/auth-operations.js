@@ -5,12 +5,12 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
     set(token) {
-        axios.defaults.headers.common.Autorization = `Bearer ${token}`;
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
     unset() {
-        axios.defaults.headers.common.Autorization = '';
+        axios.defaults.headers.common.Authorization = '';
     },
-}
+};
 
 const register = credentials => async dispatch => {
     dispatch(authActions.registerRequest());
@@ -44,7 +44,7 @@ const logOut = () => async dispatch => {
 
     try {
         await axios.post('/users/logout');
-        // token.unset();
+        token.unset();
         dispatch(authActions.logoutSuccess());
     }
     catch (error) {
@@ -52,7 +52,27 @@ const logOut = () => async dispatch => {
     }
 };
 
-const getCurrentUser = () => (dispatch, getState) => { };
+const getCurrentUser = () => async (dispatch, getState) => {
+    const {
+        auth: { token: persistedToken },
+    } = getState();
+
+    if (!persistedToken) {
+        return;
+    }
+    token.set(persistedToken);
+
+    dispatch(authActions.getCurrentUserRequest());
+
+    try {
+        const response = await axios.get('/users/current');
+
+        dispatch(authActions.getCurrentUserSuccess(response.data));
+    }
+    catch (error) {
+        dispatch(authActions.getCurrentUserError(error.message));
+    }
+};
 
 export default {
     register,

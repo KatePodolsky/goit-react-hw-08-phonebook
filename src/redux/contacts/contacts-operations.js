@@ -11,15 +11,13 @@ import {
     deleteContactError
 } from './contacts-actions';
 
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
 const fetchContacts = () => dispatch => {
     dispatch(fetchContactRequest());
 
     axios
         .get('/contacts')
         .then(({ data }) => dispatch(fetchContactSuccess(data)))
-        .catch(error => dispatch(fetchContactError(error)))
+        .catch(error => dispatch(fetchContactError(error.message)))
 }
 
 const saveContact = ({ name, number }) => dispatch => {
@@ -32,7 +30,7 @@ const saveContact = ({ name, number }) => dispatch => {
         .then(({ data }) =>
             dispatch(saveContactSuccess(data)))
         .catch(error =>
-            dispatch(saveContactError(error)));
+            dispatch(saveContactError(error.message)))
 
 }
 
@@ -43,7 +41,7 @@ const deleteContact = id => dispatch => {
         .delete(`/contacts/${id}`)
         .then(() => dispatch(deleteContactSuccess(id)))
         .catch(error =>
-            dispatch(deleteContactError(error)))
+            dispatch(deleteContactError(error.message)))
 
 }
 // eslint-disable-next-line

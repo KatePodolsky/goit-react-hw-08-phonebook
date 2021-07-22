@@ -12,9 +12,9 @@ const logoutRequest = createAction('auth/logoutRequest');
 const logoutSuccess = createAction('auth/logoutSuccess');
 const logoutError = createAction('auth/logoutError');
 
-const getCurrentUserRequest = createAction('auth/logoutRequest');
-const getCurrentUserSuccess = createAction('auth/logoutSuccess');
-const getCurrentUserError = createAction('auth/logoutError');
+const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
+const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
+const getCurrentUserError = createAction('auth/getCurrentUserError');
 
 export default {
     registerRequest,
