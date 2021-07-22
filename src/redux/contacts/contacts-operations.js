@@ -11,7 +11,7 @@ import {
     deleteContactError
 } from './contacts-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040/';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const fetchContacts = () => dispatch => {
     dispatch(fetchContactRequest());
@@ -19,7 +19,7 @@ const fetchContacts = () => dispatch => {
     axios
         .get('/contacts')
         .then(({ data }) => dispatch(fetchContactSuccess(data)))
-        .catch(error=>dispatch(fetchContactError(error)))
+        .catch(error => dispatch(fetchContactError(error)))
 }
 
 const saveContact = ({ name, number }) => dispatch => {

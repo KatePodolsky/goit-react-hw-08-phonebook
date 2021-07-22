@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+
 
 import styles from './RegisterPage.module.css';
 
@@ -16,6 +18,8 @@ class RegisterPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+
+        this.props.onRegister(this.state);
 
         this.setState({ name: '', email: '', password: '' });
     };
@@ -35,7 +39,8 @@ class RegisterPage extends Component {
                     <label className={styles.label}>
                         Name
                         <input
-                            type="name"
+                            className={styles.input}
+                            type="text"
                             name="name"
                             value={name}
                             onChange={this.handleChange}
@@ -45,6 +50,7 @@ class RegisterPage extends Component {
                     <label className={styles.label}>
                         Post
                         <input
+                            className={styles.input}
                             type="email"
                             name="email"
                             value={email}
@@ -58,19 +64,20 @@ class RegisterPage extends Component {
                             type="password"
                             name="password"
                             value={password}
+                            className={styles.input}
                             onChange={this.handleChange}
                         />
                     </label>
 
-                    <button type="submit">Register now </button>
+                    <button className={styles.button} type="submit">Register now </button>
                 </form>
             </div>
         );
     }
 }
 
-// const mapDispatchToProps = {
-//     onLogin: authOperations.logIn,
-// };
+const mapDispatchToProps = {
+    onRegister: authOperations.register,
+};
 
-export default RegisterPage;
+export default connect(null, mapDispatchToProps)(RegisterPage);
