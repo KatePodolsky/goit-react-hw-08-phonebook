@@ -1,7 +1,7 @@
 import Loader from "react-loader-spinner";
 import styles from "./Loader.module.css";
 
-const LoaderContacts = () => {
+const Loading = () => {
   return <Loader className={styles.loader}
     type="ThreeDots"
     color="green"
@@ -11,4 +11,4 @@ const LoaderContacts = () => {
       />
 }
 
-export default LoaderContacts
+export default Loading

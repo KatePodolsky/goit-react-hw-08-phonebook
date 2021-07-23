@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ContactForm from "../../components/ContactForm";
 import ContactList from "../../components/ContactList";
 import FilterContacts from "../../components/FilterContacts";
-import LoaderContacts from "../../components/Loader";
+import Loading from "../../components/Loader";
 
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
@@ -26,7 +26,7 @@ class ContactsPage extends Component {
       <>
         <ContactForm />
         <FilterContacts />
-        {this.props.isLoadingContacts && <LoaderContacts />}
+        {this.props.isLoadingContacts && <Loading />}
         <ContactList />
       </>
     )

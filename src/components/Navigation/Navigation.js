@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import routes from '../../routes';
+
+import { authSelectors } from '../../redux/auth';
 
 import styles from './Navigation.module.css';
 
-const Navigation = () => (
+const Navigation = ({ isAuthenticated }) => (
     <nav>
         <NavLink
             to='/'
@@ -14,16 +16,21 @@ const Navigation = () => (
         >
             Home
         </NavLink>
-
-        <NavLink
+        {isAuthenticated && (
+            <NavLink
             to='/contacts'
             exact
             className={styles.link}
             activeClassName={styles.activeLink}
         >
             Сontacts
-        </NavLink>
+        </NavLink> )}
     </nav>
 );
 
-export default Navigation;
+const mapStateToProps = state => ({
+    isAuthenticated: authSelectors.getIsAuthenticated(state),
+})
+
+// eslint-disable-next-line
+export default connect(mapStateToProps)(Navigation);

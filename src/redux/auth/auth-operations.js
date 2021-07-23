@@ -74,6 +74,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     }
 };
 
+// eslint-disable-next-line
 export default {
     register,
     logIn,

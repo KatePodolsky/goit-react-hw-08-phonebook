@@ -6,6 +6,7 @@
   margin-right: auto;
   width: 500px;
   font-size: 16px;
-  color: rgba(11, 144, 108);
-  border: solid 2px rgb(11, 144, 108);
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(68, 58, 58) 0 0 2px;
 }
